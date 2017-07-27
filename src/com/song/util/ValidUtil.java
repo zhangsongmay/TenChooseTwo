@@ -2,6 +2,8 @@ package com.song.util;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * // TODO description
@@ -10,6 +12,7 @@ import java.util.Set;
  * @version 2017-07-24
  */
 public class ValidUtil {
+    private static final Pattern PATTERN = Pattern.compile("[0-9]{8}-[0-9]{3}");
     /**
      * 验证输入的字符串是否正确
      * 必须以英文逗号分隔5个数字，形如  1,2,3,4,5
@@ -121,14 +124,8 @@ public class ValidUtil {
      * @return
      */
     public static boolean validDate(String dateStr) {
-        boolean flag = true;
-        try {
-            if(null != dateStr && !"".equals(dateStr.trim())) {
-                DateUtil.parseStrToDate(dateStr);
-            }
-        } catch (Exception e) {
-            flag = false;
-        }
-        return flag;
+        Matcher matcher = PATTERN.matcher(dateStr);
+        return matcher.matches();
     }
+
 }

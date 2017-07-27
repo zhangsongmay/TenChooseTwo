@@ -7,14 +7,13 @@ package com.song.dto;
  * @version 2017-07-24
  */
 public class SearchRecordDto extends RecordDto {
+    /**
+     * 截取的中奖号码的3位数
+     */
     private String splitNumber;
 
-    public SearchRecordDto(String number, long dateLong) {
-        super(number, dateLong);
-    }
-
-    public SearchRecordDto(String number, long dateLong, String splitNumber) {
-        super(number, dateLong);
+    public SearchRecordDto(String number, String period, String splitNumber) {
+        super(number, period);
         this.splitNumber = splitNumber;
     }
 
@@ -33,7 +32,7 @@ public class SearchRecordDto extends RecordDto {
 
     @Override
     public String toString() {
-        return super.number  + "||" + super.dateLong + "||" + splitNumber ;
+        return super.toString();
     }
 
     @Override

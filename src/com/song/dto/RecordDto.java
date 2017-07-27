@@ -7,12 +7,31 @@ package com.song.dto;
  * @version 2017-07-24
  */
 public class RecordDto implements Comparable<RecordDto> {
+    /**
+     * 中奖号码
+     */
     protected String number;
+    /**
+     * 期数，格式为20170701-001
+     */
+    protected String period;
+    /**
+     *期数的数字格式20170701001，用于排序
+     */
     protected long dateLong;
 
-    public RecordDto(String number, long dateLong) {
+    public RecordDto(String number, String period) {
         this.number = number;
-        this.dateLong = dateLong;
+        this.period = period;
+        this.dateLong = Long.parseLong(period.replace("-",""));
+    }
+
+    public String getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(String period) {
+        this.period = period;
     }
 
     public String getNumber() {
@@ -33,7 +52,7 @@ public class RecordDto implements Comparable<RecordDto> {
 
     @Override
     public String toString() {
-        return number  + "||" + dateLong + "\n" ;
+        return number  + "||" + period + "\n" ;
     }
 
     @Override
@@ -48,6 +67,7 @@ public class RecordDto implements Comparable<RecordDto> {
 
     @Override
     public int hashCode() {
-        return (this.getNumber()+this.getDateLong()).hashCode();
+        return (this.getNumber()+this.getPeriod()).hashCode();
     }
+
 }

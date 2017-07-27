@@ -11,7 +11,7 @@ import java.util.Date;
  * @version 2017-07-24
  */
 public class DateUtil {
-    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
     public static Date parseStrToDate(String dateStr) throws ParseException {
         Date date = null;
